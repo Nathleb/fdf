@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 11:59:26 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/05/31 19:07:06 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/01 00:06:39 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,19 @@ int parse_line(char *line, t_grid *grid, int line_nbr)
 {
 	char **line_sp_split;
 	int i;
-	
+
+	grid->highest_point = 0;
 	if ((realloc_newline_map(grid, line_nbr)) == 0 || (line_sp_split = ft_split(line, ' ')) == NULL)
 		return 0;
 	i = 0;
 	while (line_sp_split[i])
 		i++;
-	(grid->map)[line_nbr] = malloc(sizeof(int) * i + 1);	
-	(grid->map)[line_nbr][0] = i;
+	(grid->map)[line_nbr] = malloc(sizeof(int) * i + 1);
+	if (((grid->map)[line_nbr][0] = i) > grid->biggest_line)
+		grid->biggest_line = i;
 	while (i-- >= 1)
-		(grid->map)[line_nbr][i + 1] = ft_atoi(line_sp_split[i]);
+		if (abs((grid->map)[line_nbr][i + 1] = ft_atoi(line_sp_split[i])) > grid->highest_point)
+			grid->highest_point = abs((grid->map)[line_nbr][i + 1]);
 	return (1);
 }
 
@@ -51,6 +54,7 @@ int parsing_fdf(int fd, t_grid *grid)
 	line_nbr = 0;
 	loop_on = 1;
 	grid->map = malloc(0);
+	grid->biggest_line = 0;
 	while (get_next_line(fd, &line) && loop_on)
 	{
 		if (parse_line(line, grid, line_nbr) == 0)

@@ -6,15 +6,15 @@
 #    By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/06 19:27:19 by nle-biha          #+#    #+#              #
-#    Updated: 2021/05/31 14:08:51 by nle-biha         ###   ########.fr        #
+#    Updated: 2021/06/01 02:02:40 by nle-biha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME	=	fdf
 CC		=	clang
-FLAGS	=	-O3 -Wall -Wextra -Werror
-SRCS	=	srcs/ft_strisdigit.c srcs/get_next_line_utils_bonus.c srcs/get_next_line_bonus.c srcs/main.c srcs/fdf_display.c
+FLAGS	=	-O3 -Wall -Wextra
+SRCS	=	srcs/ft_strisdigit.c srcs/get_next_line_utils_bonus.c srcs/get_next_line_bonus.c srcs/main.c srcs/fdf_display.c srcs/draw_lines.c
 INCS	=	$(addprefix includes/, fdf.h)
 OBJS	=	$(SRCS:.c=.o)
 
