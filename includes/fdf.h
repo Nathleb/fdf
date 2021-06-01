@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 11:54:56 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/01 18:42:20 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/02 00:11:44 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ typedef struct	s_grid
 	double y2D;
 	int nbr_line;
 	int biggest_line;
-	int color;
 	int **map;
 
 }				t_grid;
@@ -87,7 +86,7 @@ void	my_mlx_drawline6(t_line line, t_data *img);
 void	coord_swap(t_line *line, t_grid *grid);
 void    coord_set(t_line *line, t_grid *grid);
 void	my_mlx_drawline5(t_line line, t_data *img);
-int     color_from_z(int z);
+int     color_from_z(int z1, int z2, double pour, int H);
 double calculate_y2D(t_grid *grid, int i, int j);
 double	calculate_x2D(t_grid *grid, int i, int j);
 #endif

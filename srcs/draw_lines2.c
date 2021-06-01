@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 14:39:55 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/01 18:44:45 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/01 23:42:53 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ void    coord_set(t_line *line, t_grid *grid)
 void	my_mlx_drawline5(t_line line, t_data *img)
 {
 	int color;
+	int x1init;
 
+	x1init = line.x1;
 	while (line.x1 < line.x2)
 	{
-		color = 0x0000FF00;
+		color = color_from_z(line.z1, line.z2,(line.x1 - x1init) * 1.0/(line.x2 - x1init) , line.H);
 		my_mlx_pixel_put(img, line.x1, line.y1, color);
 		line.x1++;
 	}
@@ -53,6 +55,9 @@ void	my_mlx_drawline5(t_line line, t_data *img)
 void	my_mlx_drawline6(t_line line, t_data *img)
 {
 	int color;
+	int y1init;
+
+	y1init = line.y1;
 	while (line.y1 < line.y2)
 	{
 		color = 0x0000FF00;

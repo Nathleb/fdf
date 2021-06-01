@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 14:08:54 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/01 18:41:51 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/02 00:11:11 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ void	draw_grid(t_grid *grid, t_data *img)
 	int j;
 
 	i = 0;
-	grid->x_2D0 = X_RES/2;
-	grid->y_2D0 = Y_RES/5;
-	grid->F = 20;
+	grid->F = (int)(X_RES / (grid->nbr_line + grid->biggest_line));
+	grid->x_2D0 = grid->nbr_line * grid->F;
+	grid->y_2D0 = Y_RES - grid->F * (grid->nbr_line + grid->biggest_line);
 	while ((grid->map)[i])
 	{
 		j = 1;
