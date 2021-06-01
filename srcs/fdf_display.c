@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 14:08:54 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/02 00:11:11 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/02 00:23:07 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ double	calculate_x2D(t_grid *grid, int i, int j)
 
 double calculate_y2D(t_grid *grid, int i, int j)
 {
-	return(grid->y_2D0 + grid->F * (B2 * (A2 * j - A1 * i) - (B1 * (grid->map)[i][j]) /(0.99 * grid->H)));
+	return(grid->y_2D0 + grid->F * (B2 * (A2 * j - A1 * i) - (B1 * (grid->map)[i][j])));
 }
 
 void	draw_grid(t_grid *grid, t_data *img)
