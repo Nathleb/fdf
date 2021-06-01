@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 11:54:56 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/01 03:04:25 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/01 15:23:10 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@
 # include <math.h>
 # include <fcntl.h>
 # include "../mlx_linux/mlx.h"
-# define Y_RES 540
-# define X_RES 960
+# define Y_RES 1400
+# define X_RES 1400
 # define PI 3.1415
 # define OMEGA 0.785 + PI / 2
 # define ALPHA 0.615
-# define F 50
 # define A1 cos(OMEGA)
 # define A2 sin(OMEGA)
 # define B1 cos(ALPHA)
@@ -40,7 +39,7 @@ typedef struct	s_grid
 	int y_2D0;
 	double x2D_next;
 	double y2D_next;
-	double facteur;
+	double F;
 	double height_normalizer;
 	double x2D;
 	double y2D;
@@ -71,7 +70,6 @@ typedef struct	s_data {
 }				t_data;
 
 int		display_grid(t_grid *grid);
-int		ft_strisdigit(const char *str);
 char	*ft_strjoin_free(char *s1, char *s2);
 int		get_next_line(int fd, char **line);
 void    free_nulltermchartab(char **tab);
@@ -80,5 +78,11 @@ void    my_mlx_drawline1(t_line line, t_data *img);
 void    my_mlx_drawline2(t_line line, t_data *img);
 void    my_mlx_drawline3(t_line line, t_data *img);
 void    my_mlx_drawline4(t_line line, t_data *img);
-
+void	my_mlx_drawline6(t_line line, t_data *img);
+void	coord_swap(t_line *line, t_grid *grid);
+void    coord_set(t_line *line, t_grid *grid);
+void	my_mlx_drawline5(t_line line, t_data *img);
+int     color_from_z(int z);
+double calculate_y2D(t_grid *grid, int i, int j);
+double	calculate_x2D(t_grid *grid, int i, int j);
 #endif

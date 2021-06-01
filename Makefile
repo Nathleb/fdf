@@ -6,7 +6,7 @@
 #    By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/06 19:27:19 by nle-biha          #+#    #+#              #
-#    Updated: 2021/06/01 02:02:40 by nle-biha         ###   ########.fr        #
+#    Updated: 2021/06/01 15:23:32 by nle-biha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME	=	fdf
 CC		=	clang
 FLAGS	=	-O3 -Wall -Wextra
-SRCS	=	srcs/ft_strisdigit.c srcs/get_next_line_utils_bonus.c srcs/get_next_line_bonus.c srcs/main.c srcs/fdf_display.c srcs/draw_lines.c
+SRCS	=	srcs/get_next_line_utils_bonus.c srcs/get_next_line_bonus.c srcs/main.c srcs/fdf_display.c srcs/draw_lines.c srcs/draw_lines2.c
 INCS	=	$(addprefix includes/, fdf.h)
 OBJS	=	$(SRCS:.c=.o)
 
