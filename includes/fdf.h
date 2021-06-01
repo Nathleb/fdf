@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 11:54:56 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/01 15:23:10 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/01 18:42:20 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 # define Y_RES 1400
 # define X_RES 1400
 # define PI 3.1415
-# define OMEGA 0.785 + PI / 2
-# define ALPHA 0.615
+# define OMEGA 0.785 - PI/2
+# define ALPHA 0.615 - PI/2
 # define A1 cos(OMEGA)
 # define A2 sin(OMEGA)
 # define B1 cos(ALPHA)
@@ -37,17 +37,19 @@ typedef struct	s_grid
 	
 	int x_2D0;
 	int y_2D0;
+	int	z2D;
+	int z2D_next;
 	double x2D_next;
 	double y2D_next;
 	double F;
-	double height_normalizer;
+	double H;
 	double x2D;
 	double y2D;
 	int nbr_line;
-	int highest_point;
 	int biggest_line;
 	int color;
 	int **map;
+
 }				t_grid;
 
 typedef struct	s_line
@@ -56,9 +58,12 @@ typedef struct	s_line
 	int y1;
 	int x2;
 	int y2;
+	int z1;
+	int z2;
 	int dx;
 	int dy;
 	int e;
+	int H;
 }				t_line;
 
 typedef struct	s_data {

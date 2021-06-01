@@ -6,14 +6,14 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 14:08:54 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/01 15:29:12 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/01 18:41:51 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 void	choose_octant(t_line line, t_data *img)
-{	
+{
 	if (line.dx == 0)
 		my_mlx_drawline6(line,img);
 	else if (line.dy > 0)
@@ -38,6 +38,7 @@ void	how_to_draw(t_grid *grid, t_data *img)
 {
 	t_line line;
 
+	line.H = grid->H;
 	coord_set(&line, grid);	
 	if (line.dx < 0 || (line.dx == 0 && line.y1 > line.y2))
 	{
@@ -53,7 +54,7 @@ double	calculate_x2D(t_grid *grid, int i, int j)
 
 double calculate_y2D(t_grid *grid, int i, int j)
 {
-	return(grid->y_2D0 + grid->F * (B2 * (A2 * j - A1 * i) - B1 * (grid->map)[i][j]));
+	return(grid->y_2D0 + grid->F * (B2 * (A2 * j - A1 * i) - (B1 * (grid->map)[i][j]) /(0.99 * grid->H)));
 }
 
 void	draw_grid(t_grid *grid, t_data *img)
@@ -64,7 +65,7 @@ void	draw_grid(t_grid *grid, t_data *img)
 	i = 0;
 	grid->x_2D0 = X_RES/2;
 	grid->y_2D0 = Y_RES/5;
-	grid->F = 50;
+	grid->F = 20;
 	while ((grid->map)[i])
 	{
 		j = 1;
@@ -72,16 +73,19 @@ void	draw_grid(t_grid *grid, t_data *img)
 		{
 			grid->x2D = calculate_x2D(grid, i ,j);
 			grid->y2D = calculate_y2D(grid, i ,j); 
+			grid->z2D = grid->map[i][j];
 			if (grid->map[i + 1] && j - 1 < grid->map[i + 1][0])
 			{
 				grid->x2D_next = calculate_x2D(grid, i + 1 ,j);
 				grid->y2D_next = calculate_y2D(grid, i + 1 ,j);
+				grid->z2D_next = grid->map[i + 1][j];
 				how_to_draw(grid, img);
 			}
 			if (j < grid->map[i][0])
 			{
 				grid->x2D_next = calculate_x2D(grid, i ,j + 1);
 				grid->y2D_next = calculate_y2D(grid, i ,j + 1);
+				grid->z2D_next = grid->map[i][j + 1];
 				how_to_draw(grid, img);
 			}
 			my_mlx_pixel_put(img, (int)grid->x2D, (int)grid->y2D, 0x00FFFF);

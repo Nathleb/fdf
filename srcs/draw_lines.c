@@ -6,15 +6,20 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 00:08:24 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/01 02:39:48 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/01 18:49:14 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int     color_from_z(int z)
+int     color_from_z(int z1, int z2, double pour, int H)
 {
-    return (255 << 24 | z << 16 | 120 << 8 | 120);
+	int mult;
+	int z;
+
+	z = z1 * (1 - pour) + z2 * pour
+	mult = (int)z/H;
+    return (255 << 24 | 120 * mult << 16 | 120 * mult << 8 | 255);
 }
 
 
@@ -29,16 +34,18 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 void	my_mlx_drawline1(t_line line, t_data *img)
 {
 	int color;
+	int pour;
 
+	pour = 0;
 	line.e = (line.x2 - line.x1);
 	line.dx = (line.x2 - line.x1) * 2;
 	line.dy = ((line.y2 - line.y1) * 2);
 	while (line.x1 < line.x2)
 	{
-		color = 0x00FFFF00;
+		color = color_from_z(line.z1, line.z2, , line.H);
 		my_mlx_pixel_put(img, line.x1, line.y1, color);
 		line.x1++;
-		if ((line.e = line.e - line.dy) <= 0)
+		if ((line.e = line.e - line.dy) < 0)
 		{
 			line.y1++;
 			line.e += line.dx;
@@ -79,7 +86,7 @@ void	my_mlx_drawline3(t_line line, t_data *img)
 		color = 0x00FF0000;
 		my_mlx_pixel_put(img, line.x1, line.y1, color);
 		line.x1++;
-		if ((line.e = line.e + line.dy) <= 0)
+		if ((line.e = line.e + line.dy) < 0)
 		{
 			line.y1--;
 			line.e += line.dx;
@@ -94,9 +101,9 @@ void	my_mlx_drawline4(t_line line, t_data *img)
 	line.e = (line.y2 - line.y1);
 	line.dx = ((line.x2 - line.x1) * 2);
 	line.dy = ((line.y2 - line.y1) * 2);
-	while (line.y1 < line.y2)
+	while (line.y1 > line.y2)
 	{
-		color = 0x0000FF00;
+		color = 0x00FFFFFF;
 		my_mlx_pixel_put(img, line.x1, line.y1, color);
 		line.y1--;
 		if ((line.e = line.e + line.dx) > 0)

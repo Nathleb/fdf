@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 14:39:55 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/01 15:13:12 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/01 18:44:45 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ void	coord_swap(t_line *line, t_grid *grid)
 	line->y2 = (int)(grid->y2D);
 	line->dx = (int)(grid->x2D - grid->x2D_next);
 	line->dy = (int)(grid->y2D - grid->y2D_next);
+	line->z1 = grid->z2D_next;
+	line->z2 = grid->z2D;
+
 }
 
 void    coord_set(t_line *line, t_grid *grid)
@@ -30,6 +33,8 @@ void    coord_set(t_line *line, t_grid *grid)
 	line->x2 = (int)(grid->x2D_next);
 	line->y1 = (int)(grid->y2D);
 	line->y2 = (int)(grid->y2D_next);
+	line->z1 = grid->z2D;
+	line->z2 = grid->z2D_next;
 }
 
 //dy = 0
