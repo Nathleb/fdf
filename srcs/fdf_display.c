@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 14:08:54 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/02 00:50:20 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/02 02:40:32 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ double	calculate_x2D(t_grid *grid, int i, int j)
 
 double calculate_y2D(t_grid *grid, int i, int j)
 {
-	return(grid->y_2D0 + grid->F * (B2 * (A2 * j - A1 * i) - (B1 * (grid->map)[i][j])));
+	return(grid->y_2D0 + grid->F * (B2 * (A2 * j - A1 * i) - (B1 * 8 / grid->H * (grid->map)[i][j])));
 }
 
 void	draw_grid(t_grid *grid, t_data *img)
@@ -63,9 +63,9 @@ void	draw_grid(t_grid *grid, t_data *img)
 	int j;
 
 	i = 0;
-	grid->F = (X_RES * 1.0 / (grid->nbr_line + grid->biggest_line));
+	grid->F = ((X_RES * 1.0) / (grid->nbr_line + grid->biggest_line));
 	grid->x_2D0 = (int)(grid->nbr_line * grid->F);
-	grid->y_2D0 = Y_RES / 20; 
+	grid->y_2D0 = (int)(grid->F); 
 	fprintf(stderr,"%f %d %d %d", grid->F, grid->x_2D0, grid->y_2D0, grid->biggest_line);
 	while ((grid->map)[i])
 	{
@@ -89,7 +89,6 @@ void	draw_grid(t_grid *grid, t_data *img)
 				grid->z2D_next = grid->map[i][j + 1];
 				how_to_draw(grid, img);
 			}
-			my_mlx_pixel_put(img, (int)grid->x2D, (int)grid->y2D, 0x00FFFF);
 			j++;
 		}
 		i++;
@@ -104,7 +103,7 @@ int display_grid(t_grid *grid)
 
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, X_RES, Y_RES, "Fdf");
-	img.img = mlx_new_image(mlx, X_RES, Y_RES);
+	img.img = mlx_new_image(mlx, 2*X_RES, 2*Y_RES);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
 	draw_grid(grid, &img);

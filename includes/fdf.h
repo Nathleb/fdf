@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 11:54:56 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/02 00:57:10 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/02 02:19:12 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <fcntl.h>
 # include "../mlx_linux/mlx.h"
 # define Y_RES 800
-# define X_RES 1600
+# define X_RES 1200
 # define PI 3.1415
 # define OMEGA 0.785 - PI/2
 # define ALPHA 0.615 - PI/2
