@@ -6,11 +6,30 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 14:08:54 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/02 02:40:32 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/02 14:37:48 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int	key_hook(int keycode, t_vars *vars)
+{
+	int i;
+
+	if (keycode == ESC)
+	{
+		i = 0;
+		while ((vars->grid->map)[i])
+		{
+			free(vars->grid->map[i]);
+			i++;
+		}
+		free(vars->grid->map);
+		mlx_destroy_window(vars->mlx, vars->mlx_win);
+		exit(0);
+	}
+	return (1);
+}
 
 void	choose_octant(t_line line, t_data *img)
 {
@@ -54,7 +73,7 @@ double	calculate_x2D(t_grid *grid, int i, int j)
 
 double calculate_y2D(t_grid *grid, int i, int j)
 {
-	return(grid->y_2D0 + grid->F * (B2 * (A2 * j - A1 * i) - (B1 * 8 / grid->H * (grid->map)[i][j])));
+	return(grid->y_2D0 + grid->F * (B2 * (A2 * j - A1 * i) - (B1 * 10 / grid->H * (grid->map)[i][j])));
 }
 
 void	draw_grid(t_grid *grid, t_data *img)
@@ -63,10 +82,9 @@ void	draw_grid(t_grid *grid, t_data *img)
 	int j;
 
 	i = 0;
-	grid->F = ((X_RES * 1.0) / (grid->nbr_line + grid->biggest_line));
-	grid->x_2D0 = (int)(grid->nbr_line * grid->F);
-	grid->y_2D0 = (int)(grid->F); 
-	fprintf(stderr,"%f %d %d %d", grid->F, grid->x_2D0, grid->y_2D0, grid->biggest_line);
+	grid->F = ((MIN(Y_RES, X_RES) * 1.0) / (grid->nbr_line + grid->biggest_line));
+	grid->x_2D0 = (int)((grid->nbr_line) * grid->F);
+	grid->y_2D0 = (int)(grid->F) * 8; 
 	while ((grid->map)[i])
 	{
 		j = 1;
@@ -75,6 +93,10 @@ void	draw_grid(t_grid *grid, t_data *img)
 			grid->x2D = calculate_x2D(grid, i ,j);
 			grid->y2D = calculate_y2D(grid, i ,j); 
 			grid->z2D = grid->map[i][j];
+			grid->x2Dmin = MIN((int)(grid->x2D), grid->x2Dmin);
+			grid->y2Dmin = MIN((int)(grid->y2D), grid->y2Dmin);
+			grid->y2Dmax = MAX((int)(grid->y2D), grid->y2Dmax);
+			grid->x2Dmax = MAX((int)(grid->x2D), grid->x2Dmax);
 			if (grid->map[i + 1] && j - 1 < grid->map[i + 1][0])
 			{
 				grid->x2D_next = calculate_x2D(grid, i + 1 ,j);
@@ -95,19 +117,33 @@ void	draw_grid(t_grid *grid, t_data *img)
 	}
 }
 
+void	t_grid_init(t_grid *grid)
+{
+	grid->x2Dmin = 2147483647; 
+	grid->y2Dmin = 2147483647;
+	grid->x2Dmax = -2147483648;
+	grid->y2Dmax = -2147483648;
+}
+
 int display_grid(t_grid *grid)
 {
-	void	*mlx;
-	void	*mlx_win;
+	t_vars vars;
 	t_data	img;
+	int xoffset;
+	int yoffset;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, X_RES, Y_RES, "Fdf");
-	img.img = mlx_new_image(mlx, 2*X_RES, 2*Y_RES);
+	vars.grid = grid;
+	vars.mlx = mlx_init();
+	vars.mlx_win = mlx_new_window(vars.mlx, X_RES, Y_RES, "Fdf");
+	img.img = mlx_new_image(vars.mlx, X_RES, Y_RES);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
-	draw_grid(grid, &img);
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
+	t_grid_init(vars.grid);
+	draw_grid(vars.grid, &img);
+	mlx_key_hook(vars.mlx_win, key_hook, &vars);
+	xoffset = (X_RES - (vars.grid->x2Dmax + vars.grid->x2Dmin)) / 2;
+	yoffset = (Y_RES - (vars.grid->y2Dmax + vars.grid->y2Dmin)) / 2;
+	mlx_put_image_to_window(vars.mlx, vars.mlx_win, img.img, xoffset, yoffset);
+	mlx_loop(vars.mlx);
 	return (1);
 }

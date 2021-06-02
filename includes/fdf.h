@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 11:54:56 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/02 02:19:12 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/02 14:07:09 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include "../mlx_linux/mlx.h"
 # define Y_RES 800
 # define X_RES 1200
+# define ESC 65307
 # define PI 3.1415
 # define OMEGA 0.785 - PI/2
 # define ALPHA 0.615 - PI/2
@@ -31,7 +32,8 @@
 # define A2 sin(OMEGA)
 # define B1 cos(ALPHA)
 # define B2 sin(ALPHA)
-
+#define MIN(a, b)       ((a) < (b) ? (a) : (b))
+#define MAX(a, b)       ((a) < (b) ? (b) : (a))
 typedef struct	s_grid
 {
 	
@@ -39,6 +41,10 @@ typedef struct	s_grid
 	int y_2D0;
 	int	z2D;
 	int z2D_next;
+	int x2Dmin;
+	int	x2Dmax;
+	int y2Dmin;
+	int y2Dmax;
 	double x2D_next;
 	double y2D_next;
 	double F;
@@ -72,6 +78,12 @@ typedef struct	s_data {
 	int		line_length;
 	int		endian;
 }				t_data;
+
+typedef struct	s_vars {
+	void	*mlx;
+	void	*mlx_win;
+	t_grid	*grid;
+}				t_vars;
 
 int		display_grid(t_grid *grid);
 char	*ft_strjoin_free(char *s1, char *s2);

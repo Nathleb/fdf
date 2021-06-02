@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 11:59:26 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/01 17:54:29 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/02 13:45:39 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,5 @@ int main(int argc, char **argv)
 	if ((fd = open(argv[1], O_RDONLY)) != -1)
 		if (parsing_fdf(fd, &grid))
 			display_grid(&grid);
-	int i = 0;
-	while ((grid.map)[i])
-	{
-		free(grid.map[i]);
-		i++;
-	}
-	free(grid.map);
 	return(0);
 }
