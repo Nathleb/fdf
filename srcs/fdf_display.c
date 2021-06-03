@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 14:08:54 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/02 14:37:48 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/03 15:35:35 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ double	calculate_x2D(t_grid *grid, int i, int j)
 
 double calculate_y2D(t_grid *grid, int i, int j)
 {
-	return(grid->y_2D0 + grid->F * (B2 * (A2 * j - A1 * i) - (B1 * 10 / grid->H * (grid->map)[i][j])));
+	return(grid->y_2D0 + grid->F * (B2 * (A2 * j - A1 * i) - (B1  * (grid->map)[i][j])));
 }
 
 void	draw_grid(t_grid *grid, t_data *img)
@@ -82,9 +82,9 @@ void	draw_grid(t_grid *grid, t_data *img)
 	int j;
 
 	i = 0;
-	grid->F = ((MIN(Y_RES, X_RES) * 1.0) / (grid->nbr_line + grid->biggest_line));
+	grid->F = ((Y_RES * 0.8) / (B2 * (A2 * grid->biggest_line - A1 * grid->nbr_line) + B1 * grid->H)); 
 	grid->x_2D0 = (int)((grid->nbr_line) * grid->F);
-	grid->y_2D0 = (int)(grid->F) * 8; 
+	grid->y_2D0 = (int)(grid->F) * B1 * grid->H; 
 	while ((grid->map)[i])
 	{
 		j = 1;
