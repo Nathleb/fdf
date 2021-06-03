@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 11:54:56 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/02 14:07:09 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/03 15:58:13 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct	s_vars {
 	void	*mlx;
 	void	*mlx_win;
 	t_grid	*grid;
+	t_data	*img;
 }				t_vars;
 
 int		display_grid(t_grid *grid);

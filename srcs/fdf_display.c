@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 14:08:54 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/03 15:35:35 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/03 16:19:46 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ int	key_hook(int keycode, t_vars *vars)
 		}
 		free(vars->grid->map);
 		mlx_destroy_window(vars->mlx, vars->mlx_win);
+		mlx_destroy_image(vars->mlx, vars->img->img);
+		mlx_destroy_display(vars->mlx);
+		free(vars->mlx);
 		exit(0);
 	}
 	return (1);
@@ -139,6 +142,7 @@ int display_grid(t_grid *grid)
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
 	t_grid_init(vars.grid);
+	vars.img = &img;
 	draw_grid(vars.grid, &img);
 	mlx_key_hook(vars.mlx_win, key_hook, &vars);
 	xoffset = (X_RES - (vars.grid->x2Dmax + vars.grid->x2Dmin)) / 2;
