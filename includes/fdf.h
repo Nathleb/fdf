@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 11:54:56 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/03 21:54:11 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/03 23:50:24 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@
 # define PI 3.1415
 # define OMEGA -0.7858
 # define ALPHA -0.7858
-# define A1 0.7068
-# define A2 -0.7074
-# define B1 0.7068
-# define B2 -0.7074
+//# define A1 0.7068
+//# define A2 -0.7074
+//# define B1 0.7068
+//# define B2 -0.7074
 
 typedef struct s_grid
 {
@@ -52,7 +52,10 @@ typedef struct s_grid
 	int		nbr_line;
 	int		biggest_line;
 	int		**map;
-
+	double	A1;
+	double	A2;
+	double	B1;
+	double	B2;
 }				t_grid;
 
 typedef struct s_line

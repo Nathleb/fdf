@@ -6,24 +6,24 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 18:56:29 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/03 21:55:52 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/03 23:54:19 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-double	calculate_x2D(t_grid *grid, int i, int j)
+double	calculate_x2D(t_grid *g, int i, int j)
 {
-	return (grid->x_2D0 + grid->F * (A1 * j + A2 * i));
+	return (g->x_2D0 + g->F * (g->A1 * j + g->A2 * i));
 }
 
-double	calculate_y2D(t_grid *grid, int i, int j)
+double	calculate_y2D(t_grid *g, int i, int j)
 {
 	double	r;
 	double	mul;
 
-	mul = grid->F * (B2 * (A2 * j - A1 * i) - (B1 * (grid->map)[i][j]));
-	r = grid->y_2D0 + mul;
+	mul = g->F * (g->B2 * (g->A2 * j - g->A1 * i) - (g->B1 * g->map[i][j]));
+	r = g->y_2D0 + mul;
 	return (r);
 }
 
@@ -33,6 +33,10 @@ void	t_grid_init(t_grid *grid)
 	grid->y2Dmin = 2147483647;
 	grid->x2Dmax = -2147483648;
 	grid->y2Dmax = -2147483648;
+	grid->A1 = cos(OMEGA);
+	grid->A2 = sin(OMEGA);
+	grid->B1 = cos(ALPHA);
+	grid->B2 = sin(ALPHA);
 }
 
 void	calculate_newpos(t_grid *grid, int i, int j)

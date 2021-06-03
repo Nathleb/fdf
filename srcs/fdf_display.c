@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 14:08:54 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/03 21:11:04 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/04 00:09:30 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,27 +69,27 @@ void	how_to_draw(t_grid *grid, t_data *img)
 	choose_octant(line, img);
 }
 
-void	draw_grid(t_grid *grid, t_data *img)
+void	draw_grid(t_grid *g, t_data *img)
 {
 	int		i;
 	int		j;
 	double	d;
 
-	d = B2 * (A2 * grid->biggest_line - A1 * grid->nbr_line) + B1 * 2 * grid->H;
+	d = g->B2 * (g->A2 * g->biggest_line - g->A1 * g->nbr_line);
 	i = 0;
-	grid->F = ((Y_RES * 1.0) / d);
-	grid->x_2D0 = (int)((grid->nbr_line) * grid->F);
-	grid->y_2D0 = (int)((grid->F) * B1 * grid->H);
-	while ((grid->map)[i])
+	g->F = ((Y_RES * 1.0) / (d + g->B1 * 2 * g->H));
+	g->x_2D0 = (int)((g->nbr_line) * g->F);
+	g->y_2D0 = (int)((g->F) * g->B1 * g->H);
+	while ((g->map)[i])
 	{
 		j = 1;
-		while (j <= (grid->map)[i][0])
+		while (j <= (g->map)[i][0])
 		{
-			calculate_newpos(grid, i, j);
-			if (grid->map[i + 1] && j - 1 < grid->map[i + 1][0])
-				calculate_newpos_next_draw(grid, i + 1, j, img);
-			if (j < grid->map[i][0])
-				calculate_newpos_next_draw(grid, i, j + 1, img);
+			calculate_newpos(g, i, j);
+			if (g->map[i + 1] && j - 1 < g->map[i + 1][0])
+				calculate_newpos_next_draw(g, i + 1, j, img);
+			if (j < g->map[i][0])
+				calculate_newpos_next_draw(g, i, j + 1, img);
 			j++;
 		}
 		i++;

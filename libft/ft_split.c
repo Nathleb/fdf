@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 17:27:45 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/03 23:31:48 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/04 00:12:47 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_sub_split(char **ret, char const *s, char c, unsigned int n)
 			i++;
 			lenwrd++;
 		}
-		ret[i] = ft_substr(s, i - lenwrd, lenwrd);
+		ret[j] = ft_substr(s, i - lenwrd, lenwrd);
 		if (ret[j] == NULL)
 			return (ft_free_split(ret));
 		j++;
