@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 11:54:56 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/03 23:50:24 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/04 00:48:36 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,18 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 64
 # endif
+# ifndef OMEGA
+#  define OMEGA -0.7858
+# endif
+# ifndef ALPHA
+#  define ALPHA -0.7858
+# endif
+# ifndef X_RES
+#  define X_RES 400
+# endif
+# ifndef Y_RES
+#  define Y_RES 800
+# endif
 # include "../libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
@@ -22,16 +34,7 @@
 # include <math.h>
 # include <fcntl.h>
 # include "../mlx_linux/mlx.h"
-# define Y_RES 800
-# define X_RES 1420
 # define ESC 65307
-# define PI 3.1415
-# define OMEGA -0.7858
-# define ALPHA -0.7858
-//# define A1 0.7068
-//# define A2 -0.7074
-//# define B1 0.7068
-//# define B2 -0.7074
 
 typedef struct s_grid
 {
