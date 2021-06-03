@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 16:35:56 by nle-biha          #+#    #+#             */
-/*   Updated: 2020/11/30 19:18:51 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/03 23:26:08 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list *ret;
+	t_list	*ret;
 
-	if ((ret = (t_list *)malloc(sizeof(t_list))) == NULL)
+	ret = (t_list *)malloc(sizeof(t_list));
+	if (ret == NULL)
 		return (NULL);
 	ret->next = NULL;
 	ret->content = content;

@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 16:48:41 by nle-biha          #+#    #+#             */
-/*   Updated: 2020/11/23 21:36:09 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/03 23:26:25 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	int ret;
+	int	ret;
 
 	ret = 0;
 	while (lst)

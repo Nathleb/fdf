@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 23:38:25 by nle-biha          #+#    #+#             */
-/*   Updated: 2020/11/25 18:24:56 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/03 23:18:10 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	ft_atoi(const char *nptr)
 	i = 0;
 	sign = 1;
 	ret = 0;
-	while (nptr[i] == '\t' || nptr[i] == '\n' || nptr[i] == '\r' ||
-			nptr[i] == '\v' || nptr[i] == '\f' || nptr[i] == ' ')
+	while (nptr[i] == '\t' || nptr[i] == '\n' || nptr[i] == '\r'
+		|| nptr[i] == '\v' || nptr[i] == '\f' || nptr[i] == ' ')
 		i++;
 	if (nptr[i] == '-' || nptr[i] == '+')
 	{

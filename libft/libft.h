@@ -6,24 +6,24 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 23:14:37 by nle-biha          #+#    #+#             */
-/*   Updated: 2020/11/25 18:36:36 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/03 23:39:18 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIBFT_H
-# define FT_LIBFT_H
+#ifndef LIBFT_H
+# define LIBFT_H
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
 
-typedef struct	s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }				t_list;
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst,
-		void *(*f)(void *), void (*del)(void *));
+					void *(*f)(void *), void (*del)(void *));
 void			*ft_calloc(size_t nmemb, size_t size);
 void			ft_lstclear(t_list **lst, void (*del)(void*));
 void			ft_lstdelone(t_list *lst, void (*del)(void*));

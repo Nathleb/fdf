@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:30:27 by nle-biha          #+#    #+#             */
-/*   Updated: 2020/11/30 02:18:55 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/03 23:33:27 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	lens1 = ft_strlen(s1);
 	lens2 = ft_strlen(s2);
-	if ((ret = (char *)malloc(lens1 + lens2 + 1)) == NULL)
+	ret = malloc(lens1 + lens2 + 1);
+	if (ret == NULL)
 		return (ret);
 	while (++i < lens1)
 		ret[i] = s1[i];

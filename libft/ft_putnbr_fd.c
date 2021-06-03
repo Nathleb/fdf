@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 19:19:05 by nle-biha          #+#    #+#             */
-/*   Updated: 2020/11/22 20:22:46 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/03 23:29:20 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	long int nbr;
+	long int	nbr;
 
 	nbr = n;
 	if (nbr < 0)

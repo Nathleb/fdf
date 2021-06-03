@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-lebiha@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 22:04:54 by nle-biha          #+#    #+#             */
-/*   Updated: 2020/11/26 17:08:46 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/03 23:27:13 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	unsigned char *destcpy;
-	unsigned char *srccpy;
+	unsigned char	*destcpy;
+	unsigned char	*srccpy;
 
 	destcpy = (unsigned char *)dest;
 	srccpy = (unsigned char *)src;

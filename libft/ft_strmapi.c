@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 18:49:15 by nle-biha          #+#    #+#             */
-/*   Updated: 2020/11/30 02:20:26 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/03 23:34:07 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		return (NULL);
 	while (s[i])
 		i++;
-	if ((ret = (char *)malloc(sizeof(char) * (i + 1))) == NULL)
+	ret = malloc(sizeof(char) * (i + 1));
+	if (ret == NULL)
 		return (NULL);
 	i = 0;
 	while (s[i])

@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-lebiha@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 22:01:51 by nle-biha          #+#    #+#             */
-/*   Updated: 2020/11/26 16:52:17 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/03 23:18:42 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char *scpy;
+	unsigned char	*scpy;
 
 	scpy = (unsigned char *)s;
 	while (n > 0)
