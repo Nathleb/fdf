@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 11:54:56 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/03 15:58:13 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/03 19:28:13 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <math.h>
 # include <fcntl.h>
 # include "../mlx_linux/mlx.h"
-# define Y_RES 800
-# define X_RES 1200
+# define Y_RES 1000
+# define X_RES 1920
 # define ESC 65307
 # define PI 3.1415
 # define OMEGA 0.785 - PI/2
@@ -102,4 +102,7 @@ void	my_mlx_drawline5(t_line line, t_data *img);
 int     color_from_z(int z1, int z2, double pour, int H);
 double calculate_y2D(t_grid *grid, int i, int j);
 double	calculate_x2D(t_grid *grid, int i, int j);
+void    t_grid_init(t_grid *grid);
+void	calculate_newpos(t_grid *grid, int i, int j);
+void    calculate_newpos_next_draw(t_grid *grid, int i, int j, t_data *img);
 #endif
