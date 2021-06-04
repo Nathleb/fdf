@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 21:51:36 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/04 12:27:55 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/04 18:48:10 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	min_int(int a, int b)
 
 double	min_double(double a, double b)
 {
-	fprintf(stderr, "%f %f\n", a, b);
 	if (a < b)
 		return (a);
 	return (b);
