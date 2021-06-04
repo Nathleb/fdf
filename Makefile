@@ -6,7 +6,7 @@
 #    By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/06 19:27:19 by nle-biha          #+#    #+#              #
-#    Updated: 2021/06/03 21:54:54 by nle-biha         ###   ########.fr        #
+#    Updated: 2021/06/04 13:17:33 by nle-biha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,11 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(INCS)
 	make -C libft
-	make -C mlx_linux
-	$(CC) $(FLAGS) -I includes -o $(NAME) $(OBJS) -Llibft -lft -Lmlx_linux -lmlx_Linux -lX11 -lbsd -lm -lXext
+	make -C mlx
+	$(CC) $(FLAGS) -I includes -o $(NAME) $(OBJS) -Llibft -lft -Lmlx -lmlx -lX11 -lbsd -lm -lXext
 
 %.o: %.c $(INCS)
-	$(CC) $(FLAGS) -I includes -Imlx_linux -c $< -o $@
+	$(CC) $(FLAGS) -I includes -Imlx -c $< -o $@
 
 clean:
 	@make fclean -C libft

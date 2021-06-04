@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 11:54:56 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/04 12:58:54 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/04 13:17:53 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # include <unistd.h>
 # include <math.h>
 # include <fcntl.h>
-# include "../mlx_linux/mlx.h"
+# include "../mlx/mlx.h"
 # define ESC 65307
 
 typedef struct s_grid
