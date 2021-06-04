@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 11:59:26 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/04 13:00:45 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/04 13:26:37 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int	main(int argc, char **argv)
 {
 	t_grid	grid;
 	int		fd;
+	int		i;
 
 	grid.map = malloc(1);
 	grid.biggest_line = 0;
@@ -95,8 +96,17 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (0);
 	fd = open(argv[1], O_RDONLY);
-	if (fd != -1)
+	if (fd != -1 && grid.map != NULL)
+	{
 		if (parsing_fdf(fd, &grid))
 			display_grid(&grid);
+		i = 0;
+		while ((grid.map)[i])
+		{
+			free(grid.map[i]);
+			i++;
+		}
+		free(grid.map);
+	}
 	return (0);
 }
