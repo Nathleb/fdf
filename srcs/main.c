@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 11:59:26 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/03 23:56:29 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/04 13:00:45 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,10 @@ int	parse_line(char *line, t_grid *grid, int line_nbr)
 	while (i-- >= 1)
 	{
 		(grid->map)[line_nbr][i + 1] = ft_atoi(line_sp_split[i]);
-		if (abs((grid->map)[line_nbr][i + 1]) > grid->H)
-			grid->H = abs((grid->map)[line_nbr][i + 1]);
+		if ((grid->map)[line_nbr][i + 1] > grid->H)
+			grid->H = (grid->map)[line_nbr][i + 1];
+		if (((grid->map)[line_nbr][i + 1] < grid->D))
+			grid->D = (grid->map)[line_nbr][i + 1];
 	}
 	free_nulltermchartab(line_sp_split);
 	return (1);
@@ -88,7 +90,8 @@ int	main(int argc, char **argv)
 
 	grid.map = malloc(1);
 	grid.biggest_line = 0;
-	grid.H = -2147483648;
+	grid.H = 0;
+	grid.D = 0;
 	if (argc != 2)
 		return (0);
 	fd = open(argv[1], O_RDONLY);

@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 14:39:55 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/03 18:41:41 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/04 12:25:28 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	my_mlx_drawline5(t_line line, t_data *img)
 	{
 		color = color_from_z(line.z1, line.z2,
 				(line.x1 - x1init) * 1.0 / (line.x2 - x1init), line.H);
-		my_mlx_pixel_put(img, line.x1, line.y1, color);
+		if (line.x1 > 0 && line.x1 < X_RES && line.y1 > 0 && line.y1 < Y_RES)
+			my_mlx_pixel_put(img, line.x1, line.y1, color);
 		line.x1++;
 	}
 }
@@ -69,8 +70,10 @@ void	my_mlx_drawline6(t_line line, t_data *img)
 	y1init = line.y1;
 	while (line.y1 < line.y2)
 	{
-		color = 0x0000FF00;
-		my_mlx_pixel_put(img, line.x1, line.y1, color);
+		color = color_from_z(line.z1, line.z2,
+				(line.y1 - y1init) * 1.0 / (line.y2 - y1init), line.H);
+		if (line.x1 > 0 && line.x1 < X_RES && line.y1 > 0 && line.y1 < Y_RES)
+			my_mlx_pixel_put(img, line.x1, line.y1, color);
 		line.y1++;
 	}
 }

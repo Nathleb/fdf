@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 00:08:24 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/03 18:51:42 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/04 12:23:23 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	my_mlx_drawline1(t_line line, t_data *img)
 	{
 		color = color_from_z(line.z1, line.z2,
 				(line.x1 - x1init) * 1.0 / (line.x2 - x1init), line.H);
-		my_mlx_pixel_put(img, line.x1, line.y1, color);
+		if (line.x1 > 0 && line.x1 < X_RES && line.y1 > 0 && line.y1 < Y_RES)
+			my_mlx_pixel_put(img, line.x1, line.y1, color);
 		line.x1++;
 		line.e = line.e - line.dy;
 		if (line.e < 0)
@@ -59,7 +60,8 @@ void	my_mlx_drawline2(t_line line, t_data *img)
 	{
 		color = color_from_z(line.z1, line.z2,
 				(line.y1 - y1init) * 1.0 / (line.y2 - y1init), line.H);
-		my_mlx_pixel_put(img, line.x1, line.y1, color);
+		if (line.x1 > 0 && line.x1 < X_RES && line.y1 > 0 && line.y1 < Y_RES)
+			my_mlx_pixel_put(img, line.x1, line.y1, color);
 		line.y1++;
 		line.e = line.e - line.dx;
 		if (line.e < 0)
@@ -84,7 +86,8 @@ void	my_mlx_drawline3(t_line line, t_data *img)
 	{
 		color = color_from_z(line.z1, line.z2,
 				(line.x1 - x1init) * 1.0 / (line.x2 - x1init), line.H);
-		my_mlx_pixel_put(img, line.x1, line.y1, color);
+		if (line.x1 > 0 && line.x1 < X_RES && line.y1 > 0 && line.y1 < Y_RES)
+			my_mlx_pixel_put(img, line.x1, line.y1, color);
 		line.x1++;
 		line.e = line.e + line.dy;
 		if (line.e < 0)
@@ -108,7 +111,8 @@ void	my_mlx_drawline4(t_line line, t_data *img)
 	{
 		color = color_from_z(line.z1, line.z2,
 				(line.y1 - y1init) * 1.0 / (line.y2 - y1init), line.H);
-		my_mlx_pixel_put(img, line.x1, line.y1, color);
+		if (line.x1 > 0 && line.x1 < X_RES && line.y1 > 0 && line.y1 < Y_RES)
+			my_mlx_pixel_put(img, line.x1, line.y1, color);
 		line.y1--;
 		line.e = line.e + line.dx;
 		if (line.e > 0)

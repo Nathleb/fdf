@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 11:54:56 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/04 00:48:36 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/04 12:58:54 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #  define ALPHA -0.7858
 # endif
 # ifndef X_RES
-#  define X_RES 400
+#  define X_RES 1600
 # endif
 # ifndef Y_RES
 #  define Y_RES 800
@@ -50,6 +50,7 @@ typedef struct s_grid
 	double	y2D_next;
 	double	F;
 	double	H;
+	double	D;
 	double	x2D;
 	double	y2D;
 	int		nbr_line;
