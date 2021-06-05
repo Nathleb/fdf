@@ -6,7 +6,7 @@
 /*   By: nle-biha <nle-biha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 11:54:56 by nle-biha          #+#    #+#             */
-/*   Updated: 2021/06/04 13:17:53 by nle-biha         ###   ########.fr       */
+/*   Updated: 2021/06/05 15:31:24 by nle-biha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # ifndef Y_RES
 #  define Y_RES 800
 # endif
+# define PI 3.14
 # include "../libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
